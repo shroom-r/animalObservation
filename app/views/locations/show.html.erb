@@ -1,0 +1,10 @@
+<h1><%= @location.name %></h1>
+
+<p><%= @location.description %></p>
+
+<h3>List of observations</h3>
+<ul>
+  <% @location.observations.each do |observation| %>
+    <li><%= observation.observationDate %> - ID:<%= observation.id %> <%= observation.animalName %></li>
+  <% end %>
+</ul>

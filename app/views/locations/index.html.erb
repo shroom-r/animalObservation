@@ -1,0 +1,19 @@
+<h1>Locations</h1>
+<div>
+  <%= link_to "New Location", new_location_path %>
+</div>
+<ul class="">
+  <% @locations.each do |location| %>
+    <li>
+      <%= link_to location do %>
+        <div>ID:<%= location.id %> <%= location.name %></div>
+      <% end %>
+      </li>
+      <div>Last 3 observations</div>
+        <ul>
+          <% location.observations.last(3).reverse_each do |observation| %>
+            <li>ID:<%= observation.id %> <%= observation.animalName %></li>
+          <% end %>
+        </ul>
+  <% end %>
+</ul>
