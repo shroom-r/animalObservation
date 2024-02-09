@@ -2,9 +2,11 @@
 
 <p><%= @location.description %></p>
 
-<h3>List of observations</h3>
+<h3>List of observations</h3><%= link_to "Add new observation", new_observation_path %>
 <ul>
-  <% @location.observations.each do |observation| %>
-    <li><%= observation.observationDate %> - ID:<%= observation.id %> <%= observation.animalName %></li>
+  <% @location.observations.reverse_each do |observation| %>
+    <%= link_to observation do %>
+      <li><%= observation.observationDate %> - ID:<%= observation.id %> <%= observation.animalName %></li>
+    <% end %>
   <% end %>
 </ul>

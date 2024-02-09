@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root to: redirect("/locations")
 
-  resources :locations
-
-  resources :observations
+  resources :locations do
+    resources :observations
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -4,8 +4,7 @@
 </div>
 <ul class="">
   <% @locations.each do |location| %>
-    <li>
-      <%= link_to location do %>
+    <li><%= link_to location do %>
         <div>ID:<%= location.id %> <%= location.name %></div>
       <% end %>
       </li>
