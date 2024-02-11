@@ -7,7 +7,9 @@ class ObservationsController < ApplicationController
 
   def create
     @location = Location.find(params[:location_id])
-    @observation = @location.observations.create(observation_params)
+    @observation = Observation.new(observation_params)
+    @observation.location_id = params[:location_id]
+
     if @observation.save
       redirect_to location_path(params[:location_id])
     else
