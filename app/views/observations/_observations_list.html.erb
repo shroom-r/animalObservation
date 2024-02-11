@@ -1,6 +1,6 @@
 <% if observations.any? %>
   <ul class="flex-list">
-    <% observations.reverse_each do |observation| %>
+    <% observations.each do |observation| %>
       <li class="flex-list-element">
         <div>
           <%= link_to edit_location_observation_path(location, observation), class: "list-link" do %>

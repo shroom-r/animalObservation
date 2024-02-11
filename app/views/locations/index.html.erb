@@ -10,7 +10,7 @@
       <% end %>
     
       <small><%= t '.last_observations_count', count: location.observations.last(3).size %></small>
-      <%= render "observations/observations_list", location: location, observations: location.observations.last(3) %>
+      <%= render "observations/observations_list", location: location, observations: location.observations.order(observationDate: :desc).first(3) %>
       <% if location.observations.size == 0 %>
         <%= link_to "Add one !", new_location_observation_path(location) %>
       <% end %>

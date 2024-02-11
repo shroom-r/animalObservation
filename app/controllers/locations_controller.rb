@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
-    @observations = Observation.all
+    @locations = Location.all.order(name: :asc)
   end
 
   def new
@@ -20,6 +19,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @observations = @location.observations.order(observationDate: :desc)
   end
 
   def edit
