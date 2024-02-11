@@ -1,18 +1,24 @@
-<h3>List of observations</h3><%= link_to "Add new observation", new_location_observation_path(location) %>
-<ul class="flex-list">
-  <% observations.reverse_each do |observation| %>
-    <li class="flex-list-element">
-      <%= link_to edit_location_observation_path(location, observation), class: "list-link" do %>
-        <%= observation.observationDate %> - ID:<%= observation.id %> <%= observation.animalName %>
-      <% end %>
-      <%= link_to "",
-        location_observation_path(location, observation),
-        data: {
-          turbo_method: :delete,
-          turbo_confirm: "Are you sure you want to delete this observation ?"
-        },
-        class: "delete-button-small"
-      %>
-    </li>
-  <% end %>
-</ul>
+<% if observations.any? %>
+  <ul class="flex-list">
+    <% observations.reverse_each do |observation| %>
+      <li class="flex-list-element">
+        <div>
+          <%= link_to edit_location_observation_path(location, observation), class: "list-link" do %>
+            <%= observation.animalName %>
+          <% end %>
+          <small> - <%= observation.observationDate %></small>
+        </div>
+        <%= link_to "",
+          location_observation_path(location, observation),
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure you want to delete this observation ?"
+          },
+          class: "delete-button-small"
+        %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div>No observation yet</div>
+<% end %>

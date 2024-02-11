@@ -28,4 +28,14 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  locations:
+    index:
+      last_observations_count:
+        zero: ""
+        one: "Last observation"
+        other: "Last %{count} observations"
+    show:
+      observations_count:
+        zero: ""
+        one: "One observation"
+        other: "%{count} observations"

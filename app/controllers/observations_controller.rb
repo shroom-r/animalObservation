@@ -3,7 +3,6 @@ class ObservationsController < ApplicationController
   def new
     @location = Location.find(params[:location_id])
     @observation = Observation.new
-    pp "Location: " + String(location_observations_path)
   end 
 
   def create

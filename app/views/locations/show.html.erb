@@ -1,3 +1,4 @@
+<%= render "layouts/homeLink" %>
 <h1 class="flex-title">
   <%= @location.name %>
   <%=
@@ -15,4 +16,7 @@
   <p><%= @location.description %></p>
 <% end %>
 
+<h3>List of observations</h3>
+<%= link_to "Add new observation", new_location_observation_path(@location) %>
+<div><%= t '.observations_count', count: @location.observations.size %></div>
 <%= render "observations/observations_list", location: @location, observations: @location.observations %>
