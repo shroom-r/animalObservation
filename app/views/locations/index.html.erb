@@ -2,14 +2,18 @@
 <div>
   <%= link_to "New Location", new_location_path %>
 </div>
-<ul class="">
+<ul class="locations-list">
   <% @locations.each do |location| %>
     <li>
       <%= link_to location do %>
-        <div>ID:<%= location.id %> <%= location.name %></div>
+        <div><%= location.name %></div>
+      <% end %>
+    
+      <small><%= t '.last_observations_count', count: location.observations.last(3).size %></small>
+      <%= render "observations/observations_list", location: location, observations: location.observations.last(3) %>
+      <% if location.observations.size == 0 %>
+        <%= link_to "Add one !", new_location_observation_path(location) %>
       <% end %>
     </li>
-    <small><%= t '.last_observations_count', count: location.observations.last(3).size %></small>
-    <%= render "observations/observations_list", location: location, observations: location.observations.last(3) %>
   <% end %>
 </ul>

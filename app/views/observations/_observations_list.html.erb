@@ -8,14 +8,16 @@
           <% end %>
           <small> - <%= observation.observationDate %></small>
         </div>
-        <%= link_to "",
-          location_observation_path(location, observation),
-          data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure you want to delete this observation ?"
-          },
-          class: "delete-button-small"
-        %>
+        <% if current_page?(location_path(location)) %>
+          <%= link_to "",
+            location_observation_path(location, observation),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure you want to delete this observation ?"
+            },
+            class: "delete-button-small"
+          %>
+        <% end %>
       </li>
     <% end %>
   </ul>

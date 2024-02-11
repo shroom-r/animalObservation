@@ -22,6 +22,20 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    if @location.update(location_params)
+      redirect_to location_path(@location)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+
+  end
+
   def destroy
     Location.find(params[:id]).destroy
     redirect_to locations_url

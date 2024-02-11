@@ -5,6 +5,6 @@
   <%= form.label :description %>
   <%= form.text_area :description %>
   <%= form.submit %>
-  <%= link_to "Cancel", locations_path %>
+  <%= link_to "Cancel", (current_page?(new_location_path) ? locations_path : location_path(location)) %>
   <% end %>
 </div>

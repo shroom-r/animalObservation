@@ -16,7 +16,17 @@ class ObservationsController < ApplicationController
   end
 
   def edit
+    @location = Location.find(params[:location_id])
     @observation = Observation.find(params[:id])
+  end
+
+  def update
+    @observation = Observation.find(params[:id])
+    if @observation.update(observation_params)
+      redirect_to location_path(params[:location_id])
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
