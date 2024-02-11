@@ -1,12 +1,16 @@
 <div>
-  <%= form_with model: observation do |form| %>
-  <%= form.label :animalName %>
+  <%= form_with model: [@location, @observation] do |form| %>
+  <%= form.label :animalName, "Animal name" %>
   <%= form.text_field :animalName %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
   <%= form.label :description %>
   <%= form.text_area :description %>
   <%= form.label :observationDate %>
   <%= form.date_select :observationDate %>
-  <%= form.submit %>
-  <%= link_to "Cancel", locations_path %>
+  <div>
+    <%= form.submit %>
+    <%= link_to "Cancel", location_path(@location) %>
+  </div>
   <% end %>
 </div>

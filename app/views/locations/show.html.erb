@@ -1,12 +1,18 @@
-<h1><%= @location.name %></h1>
+<h1 class="flex-title">
+  <%= @location.name %>
+  <%=
+    link_to "",
+    location_path(@location),
+    data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure you want to delete this location ?"
+    },
+    class: "delete-button-big"
+  %>
+</h1>
 
-<p><%= @location.description %></p>
+<% if @location.description %>
+  <p><%= @location.description %></p>
+<% end %>
 
-<h3>List of observations</h3><%= link_to "Add new observation", new_observation_path %>
-<ul>
-  <% @location.observations.reverse_each do |observation| %>
-    <%= link_to observation do %>
-      <li><%= observation.observationDate %> - ID:<%= observation.id %> <%= observation.animalName %></li>
-    <% end %>
-  <% end %>
-</ul>
+<%= render "observations/observations_list", location: @location, observations: @location.observations %>

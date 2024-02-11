@@ -22,6 +22,11 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
+  def destroy
+    Location.find(params[:id]).destroy
+    redirect_to locations_url
+  end
+
   private
     def location_params
       params.require(:location).permit(:name, :description)
