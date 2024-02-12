@@ -1,5 +1,5 @@
-<%= render "layouts/homeLink" %>
-<h1 class="flex-title">
+<h2 class="flex-title">
+  <%= link_to "", "/", title: "Home", class: "home-link" %>
   <%= @location.name %>
   <%=
     link_to "",
@@ -17,13 +17,13 @@
     },
     class: "delete-button-big"
   %>
-</h1>
+</h2>
 
 <% if @location.description.present? %>
-  <p><%= @location.description %></p>
+  <em><%= @location.description %></em>
 <% end %>
 
-<h3>List of observations</h3>
+<h4>List of observations</h4>
 <%= link_to "Add new observation", new_location_observation_path(@location) %>
 <div><%= t '.observations_count', count: @observations.size %></div>
 <%= render "observations/observations_list", location: @location, observations: @observations %>

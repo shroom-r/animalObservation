@@ -5,7 +5,7 @@
     <% if location.errors[:name].any? %>
       <div class="error-message">
         <% location.errors[:name].each do |error| %>
-          <div><%= error %></div>
+          <div><%= error.capitalize %></div>
         <% end %>
       </div>
     <% end %>

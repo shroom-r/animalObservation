@@ -9,9 +9,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+    </style>
   </head>
 
   <body>
-    <%= yield %>
+    <header><%= render "layouts/homeLink" %></header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,18 +1,20 @@
-<h1>Locations</h1>
+<h2 class="flex-title"><%= link_to "", "/", title: "Home", class: "home-link" %>Locations</h2  >
 <div>
-  <%= link_to "New Location", new_location_path %>
+  <%= link_to new_location_path, class: "flex-title" do %>
+    <span class="add-button"></span><span>Add location</span>
+  <% end %>
 </div>
 <ul class="locations-list">
   <% @locations.each do |location| %>
     <li>
-      <%= link_to location do %>
+      <%= link_to location, class: "flex-title" do %>
         <div><%= location.name %></div>
       <% end %>
     
       <small><%= t '.last_observations_count', count: location.observations.last(3).size %></small>
       <%= render "observations/observations_list", location: location, observations: location.observations.order(observationDate: :desc).first(3) %>
       <% if location.observations.size == 0 %>
-        <%= link_to "Add one !", new_location_observation_path(location) %>
+        <small><em><%= link_to "Add one !", new_location_observation_path(location) %></em></small>
       <% end %>
     </li>
   <% end %>
